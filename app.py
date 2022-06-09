@@ -1,25 +1,29 @@
 import re
 from time import sleep
 from models import FuncPeipsiBirds
+from config import DRIVER_PATH
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
 
 class Parser:
-    def __init__(self, arg: str):
+    def __init__(self, arg: str, driver_path: str):
         """Initialize Parser class.\n
         Arguments:
             arg {str} -- chromium command line switch
+            driver_path {str} -- chromium driver path
         Example:
-            Parser('--headless'), Parser('--window-size=800,600') or  Parser('--start-maximized')
+            Parser('--headless', 'D:\chromedriver.exe'), 
+            Parser('--window-size=800,600', 'D:\chromedriver.exe')), 
+            Parser('--start-maximized', 'D:\chromedriver.exe')
         """
         self.url = 'https://birds.peipsi.org/'
         self.options = webdriver.ChromeOptions()
         self.options.add_argument(arg)
         self.options.add_experimental_option("excludeSwitches", ["enable-automation", "enable-logging"])
         self.options.add_experimental_option("useAutomationExtension", False)
-        self.service = Service(executable_path='C:\dev\chromedriver.exe')
+        self.service = Service(executable_path=driver_path)
         self.driver = webdriver.Chrome(service=self.service, options=self.options)
     
 
@@ -77,5 +81,5 @@ class Parser:
 
 
 if __name__ == '__main__':
-    parser = Parser(arg='--headless')
+    parser = Parser(arg='--headless', driver_path=DRIVER_PATH)
     parser.run()
