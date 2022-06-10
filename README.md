@@ -16,7 +16,7 @@ cd ..\peipsi-birds-data
 python.exe -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
-python app.py
+python run.py
 ```
 
 > Or you can just take the database from the 'data' directory and use it in your projects.

@@ -1,7 +1,6 @@
 import re
 from time import sleep
-from models import FuncPeipsiBirds
-from config import DRIVER_PATH
+from app.models import FuncPeipsiBirds
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -67,7 +66,6 @@ class Parser:
             "elements = document.getElementsByClassName('sym');"\
             "for (let elem of elements) {elem.click()}"
             )
-
         for link in self.driver.find_elements(by=By.TAG_NAME, value='a'):
             if re.findall('(reference)\/\w+\/$', link.get_attribute('href')):
                 order = link.get_attribute('title').split(' ')[-1]
@@ -79,7 +77,3 @@ class Parser:
         sleep(5)
         self.driver.quit()
 
-
-if __name__ == '__main__':
-    parser = Parser(arg='--headless', driver_path=DRIVER_PATH)
-    parser.run()

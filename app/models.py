@@ -1,15 +1,10 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Text
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
 Base = declarative_base()
-
-engine = create_engine('sqlite:///data/peipsi_birds.db', echo=True)
-Base.metadata.create_all(engine)
-Session = sessionmaker(bind=engine)
-session = Session()
 
 
 class PeipsiBirds(Base):
@@ -19,9 +14,14 @@ class PeipsiBirds(Base):
     family = Column(String(30))
     name_rus = Column(String(30))
     name_lat = Column(String(30))
-    signs = Column(String(3000))
-    habitat = Column(String(3000))
+    signs = Column(Text())
+    habitat = Column(Text())
 
+
+engine = create_engine('sqlite:///data/peipsi_birds.db', echo=True)
+Base.metadata.create_all(engine)
+Session = sessionmaker(bind=engine)
+session = Session()
 
 class FuncPeipsiBirds:
     @staticmethod
