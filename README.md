@@ -7,9 +7,9 @@ To run the scraper, you need to:
 - go to the directory of the project
 - create .env file and add the following line:
 ```
-DRIVER_PATH = "<path to chromedriver>"
+DRIVER_PATH = "path to chromedriver"
 ```
-> where <path to chromedriver> is the path to the chromedriver.exe file.
+> where "path to chromedriver" is the path to the chromedriver.exe file.
 - create vertual environment
 - install dependencies
 - run the scraper
@@ -26,3 +26,5 @@ python run.py
 ```
 
 > Or you can just take the database from the 'data' directory and use it in your projects.
+
+> You can download ChromeDriver from:  https://chromedriver.chromium.org/downloads
