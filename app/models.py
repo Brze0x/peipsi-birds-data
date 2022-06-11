@@ -14,8 +14,8 @@ class PeipsiBirds(Base):
     family = Column(String(30))
     name_rus = Column(String(30))
     name_lat = Column(String(30))
-    signs = Column(Text())
-    habitat = Column(Text())
+    signs = Column(Text)
+    habitat = Column(Text)
 
 
 engine = create_engine('sqlite:///data/peipsi_birds.db', echo=True)
