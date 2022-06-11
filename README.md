@@ -26,5 +26,4 @@ python run.py
 ```
 
 > Or you can just take the database from the 'data' directory and use it in your projects.
-
 > You can download ChromeDriver from:  https://chromedriver.chromium.org/downloads
